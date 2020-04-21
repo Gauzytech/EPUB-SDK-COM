@@ -292,7 +292,7 @@
 .container .device-item .device-box.color-5 .device-link{color: #f6996f;}
 .container .device-item .box-left{
     display: flex;
-    flex: 0 0 114px;
+    /*flex: 0 0 114px;*/
     justify-content: center;
     align-items: center;
     width: 114px;
