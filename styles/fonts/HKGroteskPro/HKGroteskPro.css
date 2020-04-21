@@ -3,4 +3,5 @@
     src: url('fonts/HKGroteskPro-Regular.woff2') format('woff');
     font-weight: normal;
     font-style: normal;
+    font-display: swap;
 }
