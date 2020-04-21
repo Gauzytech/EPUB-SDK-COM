@@ -329,6 +329,8 @@
 }
 .ml-3{
     margin-left: .75rem!important;
+    display: inline-block;
+    vertical-align: middle;
 }
 
 .container .contact-wrap{
