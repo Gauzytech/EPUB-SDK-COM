@@ -291,6 +291,7 @@
 .container .device-item .device-box.color-3 .device-link{color: #2e79c7;}
 .container .device-item .device-box.color-4 .device-link{color: #999999;}
 .container .device-item .device-box.color-5 .device-link{color: #f6996f;}
+.device-link:hover{text-decoration:underline; }
 .container .device-item .box-left{
     display: flex;
     /*flex: 0 0 114px;*/
