@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <script src="js/jquery3.3.1/jquery.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
+    <title>内部使用的加密与解密工具</title>
+    <style>
+
+        body {
+            margin: 0;
+        }
+
+
+    </style>
+</head>
+<body>
+<input id="key" type="text" style="width: 600px" placeholder="请在这里输入AES密码">
+<br/>
+<textarea id="content" rows="20" cols="100" placeholder="请在这里输入要加密或解密的内容"></textarea>
+
+<button id="btn1">加密内容</button>
+<button id="btn2">解密内容</button>
+
+
+<script>
+
+    $('#btn1').on('click', function () {
+        console.log(1);
+        var key=$('#key').val();
+        var content=$('#content').val();
+        document.getElementById("content").value = Encrypt(content,key);
+    });
+
+
+    $('#btn2').on('click', function () {
+        console.log(2);
+        var key=$('#key').val();
+        var content=$('#content').val();
+        var decryptedContent=Decrypt(content,key);
+        document.getElementById("content").value = decryptedContent;
+    });
+
+    function Decrypt(word, _key) {
+        console.log(word,_key);
+        const key = CryptoJS.enc.Utf8.parse(_key);  //十六位十六进制数作为密钥
+        const iv = CryptoJS.enc.Utf8.parse('');   //十六位十六进制数作为密钥偏移量
+        let encryptedHexStr = CryptoJS.enc.Hex.parse(word);
+        let srcs = CryptoJS.enc.Base64.stringify(encryptedHexStr);
+        let decrypt = CryptoJS.AES.decrypt(srcs, key, {iv: iv, mode: CryptoJS.mode.CBC, padding: CryptoJS.pad.Pkcs7});
+        let decryptedStr = decrypt.toString(CryptoJS.enc.Utf8);
+        return decryptedStr.toString();
+    }
+
+    function Encrypt(word, _key) {
+        const key = CryptoJS.enc.Utf8.parse(_key);
+        const iv = CryptoJS.enc.Utf8.parse('');   //十六位十六进制数作为密钥偏移量
+        let srcs = CryptoJS.enc.Utf8.parse(word);
+        let encrypted = CryptoJS.AES.encrypt(srcs, key, {iv: iv, mode: CryptoJS.mode.CBC, padding: CryptoJS.pad.Pkcs7});
+        return encrypted.ciphertext.toString().toUpperCase();
+    }
+
+
+</script>
+</body>
+</html>
