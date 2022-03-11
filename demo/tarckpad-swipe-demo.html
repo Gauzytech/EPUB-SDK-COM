@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+
+</body>
+<script>
+    document.addEventListener("mousewheel", wheelHandler);
+
+    function wheelHandler(e) {
+         console.log(Date.now(),'DeltaX:',e.wheelDeltaX,'DeltaY:',e.wheelDeltaY);
+        // if (e.wheelDeltaY === 180 || e.wheelDeltaY === -180) {
+        //     //这是鼠标滚轮的操作
+        //     if (e.wheelDeltaY > 0) {
+        //         console.log('鼠标滚轮滑动，向上滚动');
+        //     } else {
+        //         console.log('鼠标滚轮滑动，向下滚动');
+        //     }
+        //
+        // } else {
+        //     //这是触控板的操作
+        //     //TODO 实现目标：一次触控板的滑动，只做一次相应，过滤掉不必要的mouse wheel事件
+        //     //首先，判断到底用户是往哪个方向滑动的，是横着的，还是竖着的
+        //     if (Math.abs(e.wheelDeltaY) > Math.abs(e.wheelDeltaX)) {
+        //         //竖向滚动
+        //         if (e.wheelDeltaY > 0) {
+        //             //根据DeltaY的值进行过滤，忽略一部分mousewheel的事件
+        //             if (Math.abs(e.wheelDeltaY) > 80) {
+        //                 console.log('↓↓↓↓ - 触控板轮滑动，双手向下滑动 - ',Date.now(),e.wheelDeltaX,e.wheelDeltaY);
+        //             }
+        //
+        //         } else {
+        //             //根据DeltaY的值进行过滤，忽略一部分mousewheel的事件
+        //             if (Math.abs(e.wheelDeltaY) > 80) {
+        //                 console.log('↑↑↑↑ - 触控板轮滑动，双手向上滑动 - ',Date.now(),e.wheelDeltaX,e.wheelDeltaY);
+        //             }
+        //         }
+        //     } else if (Math.abs(e.wheelDeltaY) < Math.abs(e.wheelDeltaX)) {
+        //         //横向滚动
+        //         if (e.wheelDeltaX > 0) {
+        //             if (Math.abs(e.wheelDeltaX) > 80) {
+        //                 console.log('→→→→ - 触控板轮滑动，双手向右滑动 - ',Date.now(),e.wheelDeltaX,e.wheelDeltaY);
+        //             }
+        //         } else {
+        //             if (Math.abs(e.wheelDeltaX) > 80) {
+        //                 console.log('←←←← - 触控板轮滑动，双手向左滑动 - ',Date.now(),e.wheelDeltaX,e.wheelDeltaY);
+        //             }
+        //
+        //         }
+        //     } else {
+        //         console.log('×××× - 忽略，触控板轮滑动，方向与上下一次滑动一致（X和Y值都是0）');
+        //     }
+        //
+        // }
+    }
+
+
+    //===规律总结===
+    /*
+    1.左右滑动的，及wheelX在动的，一定是触控板，因为鼠标没有X值变的情况
+    2.WheelY的值是180或-180的，一定是鼠标滚轮（这个需要大量测试确认）
+    3.
+     */
+</script>
+</html>
