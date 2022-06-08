@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" style="position: relative">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <title>Title</title>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        /*下面的值写死的是Chrome下iphone 6的模拟值*/
+        #viewer-container {
+            position: absolute;
+            left: 10px;
+            right: 10px;
+            top: 20px;
+            bottom: 20px;
+            overflow: scroll;
+        }
+
+        #viewer {
+            height: 100%;
+            width: 100%;
+            transform: translateY(0px);
+            will-change: transform;
+        }
+
+
+    </style>
+</head>
+<body>
+<p id="content">
+   我是需要进行语言合成的内容！
+</p>
+</body>
+<script>
+
+    //一个demo项目https://xiaotianxia.github.io/blog/vuepress/js/speech_in_js_synthesis.html
+    //给HTML设置尺寸
+    $('html').css(
+            {
+                'height': window.screen.height,
+                'width': window.screen.width
+            }
+    );
+
+
+    var $textContent = $('#content').textContent;
+
+
+    var utterThis = new window.SpeechSynthesisUtterance('你好，世界！');
+    window.speechSynthesis.speak(utterThis);
+
+</script>
+</html>
